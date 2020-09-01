@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="njtech-app:war">
+    <output-path>$PROJECT_DIR$/njtech-app/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>njtech-app</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="njtech-app-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="njtech-app:war exploded" />
+    </root>
+  </artifact>
+</component>
