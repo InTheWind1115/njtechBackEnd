@@ -7,6 +7,7 @@ import com.njtechstation.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,13 +15,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Controller
+@CrossOrigin
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login.do")
+    @RequestMapping(value = "/login")
     public void login(HttpServletResponse response, String phone, String userpwd) throws IOException {
+
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        response.setHeader("Access-Control-Allow-Methods", "GET, PUT, OPTIONS, POST");
 
         String pwd = userService.queryPwd(phone);
         boolean flag = false;
