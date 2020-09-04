@@ -9,19 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @Controller
-@CrossOrigin
+
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login")
+    @CrossOrigin
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(HttpServletResponse response, String phone, String userpwd) throws IOException {
 
         response.addHeader("Access-Control-Allow-Origin", "*");
@@ -45,7 +47,7 @@ public class UserController {
     }
 
 
-
+    @CrossOrigin
     @RequestMapping(value = "/register")
     public void register(HttpServletResponse response, String username, String userpwd, String phone) throws IOException {
         User user = new User();
